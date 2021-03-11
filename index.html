@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-  <html lang="ja">
+  <html lang="ja" class="darkmode">
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,6 +30,38 @@
           <p>〒600-0001　京都府山寺市中央梅3-3-12<br>
           0001-1234-5678</p>
       </footer>
+
+      <script>  
+        var osDark = window.matchMedia("(prefers-color-scheme: dark)");  
+
+        // ダークモードがオンのときに実行する処理  
+        function darkModeOn() {  
+          document.documentElement.classList.add("darkmode");  
+        }  
+
+        // ダークモードがオフのときに実行する処理  
+        function darkModeOff() {  
+          document.documentElement.classList.remove("darkmode");  
+        } 
+
+        // ロード時の状況に応じて切り替え  
+        if (osDark.matches) {
+          //OS でダークモードがオンの場合  
+          darkModeOn();  
+        }  
+          
+        //OS の設定変更に応じて切り替え  
+        osDark.addListener(function () {  
+            if (osDark.matches) {
+            // ダークモードをオンにした場合  
+              darkModeOn();  
+            } else {
+              // ダークモードをオフにした場合  
+              darkModeOff();  
+            }  
+        }) 
+
+      </script> 
 
     </body>
 
