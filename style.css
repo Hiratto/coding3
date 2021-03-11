@@ -15,4 +15,9 @@
   --main2dark: var(--main);  
 } 
 
+/* 基本設定 */
+
+body {
+  font-family: sans-serif;
+}
 
