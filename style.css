@@ -6,6 +6,7 @@
   --main: #F26A74;  
   --sub: #FFA5A5;  
   --dark: #E13845;  
+
   --text: #444444;  
   --textwhite: #FFFFFF;  
   --back: #FFFFFF;  
@@ -13,12 +14,28 @@
   --backcheck: #FFF7D2;  
   --main2sub: var(--main);  
   --main2dark: var(--main);  
+
+  --change: 0.5s ease-in-out;
 } 
+
+:root.darkmode {
+  --text: #EBEBEB;  
+  --textwhite: #EBEBEB;  
+  --back: #231802;  
+  --backtrans: rgba(35,24,2,0.7);  
+  --backcheck: #372A0A;  
+  --main2sub: var(--sub);  
+  --main2dark: var(--dark) 
+}
 
 /* 基本設定 */
 
 body {
   font-family: sans-serif;
+  background-color: var(--back);
+  color: var(--text);
+  text-align: center;
+  transition: var(--change);
 }
 
 body,h1,h2,h3,h4,h5,h6,p,ul,figure {
@@ -40,4 +57,28 @@ a {
 
 a:hover {
   opacity: 0.8;
+}
+
+/* ヘッダー画像 */
+
+.header {
+  position: relative;
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background-image: url(img/candy.jpg);
+  background-size: cover;
+  background-position: center;
+  transition: var(--change);
+}
+
+.darkmode .header::after {
+  filter: saturate(0.8) brightness(0.8);
 }
