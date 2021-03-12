@@ -19,6 +19,14 @@
           </h1>
           <p>いつでも思い出せるキャンディの味</p>
         </div>
+
+        <aside class="switch">
+          <div class="onoffswitch">
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" >
+            <label class="onoffswitch-label" for="myonoffswitch"></label>
+          </div>
+        </aside>
+
         <div class="msg">
           <h2>はじまりは1つのキャンディーでした</h2>
           <p>わたしたちの街には古くからの甘味処がたくさんあり、カラフルで、かわいいキャンディもたくさん作られています。見ているだけでワクワクしてくる。楽しくなる。そんな気持ちを共有できたらと思って立ち上げたのが、このサイトです。</p>
@@ -43,23 +51,39 @@
 
       <script>  
         var osDark = window.matchMedia("(prefers-color-scheme: dark)");  
+        var mySwitch = document.getElementById("myonoffswitch");  
 
         // ダークモードがオンのときに実行する処理  
         function darkModeOn() {  
           document.documentElement.classList.add("darkmode");  
+          mySwitch.checked = true; 
         }  
 
         // ダークモードがオフのときに実行する処理  
         function darkModeOff() {  
           document.documentElement.classList.remove("darkmode");  
+          mySwitch.checked = false; 
         } 
 
         // ロード時の状況に応じて切り替え  
-        if (osDark.matches) {
-          //OS でダークモードがオンの場合  
-          darkModeOn();  
-        }  
-          
+        if (sessionStorage.getItem("darkMode") === "on") {// スイッチがオンの場合  
+            darkModeOn();  
+        } else if (sessionStorage.getItem("darkMode") === "off") {//スイッチがオフの場合  
+            darkModeOff();  
+        } else if (osDark.matches) {//OS でダークモードがオンの場合  
+            darkModeOn();  }  
+            
+        // スイッチの操作に応じて切り替え  
+        mySwitch.addEventListener("change", function () {  
+          if (mySwitch.checked) {// スイッチをオンにした場合  
+              darkModeOn();  
+              sessionStorage.setItem("darkMode", "on");  
+          } else {// スイッチをオフにした場合  
+              darkModeOff();  
+              sessionStorage.setItem("darkMode", "off");  
+          }  
+        }) 
+
         //OS の設定変更に応じて切り替え  
         osDark.addListener(function () {  
             if (osDark.matches) {
