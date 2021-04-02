@@ -59,6 +59,16 @@ a:hover {
   opacity: 0.8;
 }
 
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
 
 /* ======================
 ヘッダー
@@ -302,7 +312,7 @@ a:hover {
   transition: var(--change);
 }
 
-@media (min-width: 768px) {  
+@media(min-width: 768px) {  
   .text {  
     max-width: 567px;  
     margin: auto;  
@@ -361,14 +371,53 @@ photos
   }
 
   .photos li {
-    width: calc( (100% - ( 20px * 2 )) / 3 ) ;;
+    width: calc( ( 100% - ( 20px * 2 )) / 3 ) ;
     margin-bottom: 20px;
   }
 }
 
 /* ======================
-
+footer
 ====================== */
+
+.footer {  
+  padding-bottom: 110px;  
+}  
+
+.footer h2 {  
+  margin: 20px 0 33px;  
+}  
+
+.footer p {  
+  font-size: 12px;  
+  line-height: 2;  
+}  
+
+@media (min-width: 768px) {  
+  .footer h2 {  
+    margin-bottom: 46px;  
+  }  
+  .footer p {  
+    font-size: 18px; 
+ }  
+} 
+
+/* SNSメニュー */
+
+.footer ul {
+  display: flex;
+  justify-content: center;
+  margin-right: 44px;
+}
+
+.footer ul li:not(:last-child) {
+  margin-right: 20px;
+}
+
+.footer ul i {
+  font-size: 40px;
+}
+
 /* ======================
 
 ====================== */
